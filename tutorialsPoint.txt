@@ -1,0 +1,28 @@
+Insert into consumer (id, name, mobile, country) values (4, 'afsana', 145670, 'BD');
+ DECLARE
+  2  c_id consumer.id%type :=2;
+  3  c_name consumer.name%type;
+  4  c_mobile consumer.mobile%type;
+  5  c_country consumer.country%type;
+  6  BEGIN
+  7  select name, mobile, country into c_name, c_mobile, c_country from consumer
+  8  where id= c_id;
+  9  DBMS_OUTPUT.PUT_LINE
+ 10  ('consumer' ||c_name || 'address' || c_mobile ||'from' || c_country);
+ 11  END;
+ 12  /
+
+
+CREATE OR REPLACE procedure jnuPro(p_code in jnu.code&type, p_fname in jnu.fname%type, p_lname in jnu.lname%type, p_admit_date in jnu.admit_date%type, p_dept in jnu.dept%type )
+
+Function
+
+CREATE OR REPLACE FUNCTION totalConsumer
+return number is 
+total number (2) := 0;
+BEGIN
+SELECT count (*) into total
+from consumer;
+RETURN total;
+END;
+/
