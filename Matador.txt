@@ -1,0 +1,83 @@
+SQL> desc matadorEmployee;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ POSITION                                           VARCHAR2(30)
+ LOCATION                                           VARCHAR2(30)
+ COUNTRY                                            VARCHAR2(30)
+ JOINING_DATE                                       DATE
+ SALARY                                             VARCHAR2(30)
+ EMP_ID                                             NUMBER(30)
+ PHONE                                              VARCHAR2(30)
+
+SQL>
+
+
+SQL> insert into Matador values (1040, 'Fatima', 'Binte', 'fb@gmai.com', '22');
+
+1 row created.
+
+SQL> select * from Mat_backup;
+
+        ID FNAME                          LNAME
+---------- ------------------------------ ------------------------------
+EMAIL                          AGE
+------------------------------ ------------------------------
+      1000 Arif                           Hossain
+ah@gmail.com                   30
+
+      1010 Alif                           Ahmed
+aa@gmail.com                   28
+
+      1020 Jain                           Ahmed
+ja@gmail.com                   27
+
+
+        ID FNAME                          LNAME
+---------- ------------------------------ ------------------------------
+EMAIL                          AGE
+------------------------------ ------------------------------
+      1040 Fatima                         Binte
+fb@gmai.com                    22
+
+
+SQL> alter table MatadorEmployee add(phone varchar2(30));
+
+Table altered.
+
+SQL> insert into Matador values(1050, 'Ria', 'jannat', 'rj@gamil.com', '26');
+
+1 row created.
+
+SQL> desc MatadorEmployee;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ POSITION                                           VARCHAR2(30)
+ LOCATION                                           VARCHAR2(30)
+ COUNTRY                                            VARCHAR2(30)
+ JOINING_DATE                                       DATE
+ SALARY                                             VARCHAR2(30)
+ EMP_ID                                             NUMBER(30)
+ PHONE                                              VARCHAR2(30)
+
+SQL> CREATE OR REPLACE PROCEDURE insertMatador(p_Id IN Matador.Id%type, p_fname IN Matador.fname%type, p_lname IN Matador.lname%type, p_email in matador.email%type, p_age Matador.age%type)
+  2  is
+  3  begin
+  4  insert into Matador(Id, fname, lname,email, age) values(p_Id, p_fname, p_lname, p_email, p_age);
+  5  commit;
+  6  end;
+  7  /
+
+Procedure created.
+
+SQL> begin
+  2  insertMatador (1060, 'nila', 'karim', 'nk@gmail.com', '29');
+  3  End;
+  4  /
+
+PL/SQL procedure successfully completed.
+
+SQL> commit;
+
+Commit complete.
+
+SQL>
